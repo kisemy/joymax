@@ -1,3 +1,27 @@
+
+
+
+
+
+<!-- Skin configuration box -->
+<!-- <%= render 'layouts/skinconfig' %> -->
+
+    <!-- Wrapper-->
+<div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+
+        <!-- Navigation -->
+        <%= render 'layouts/navigation' %>
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+            <!-- Page wrapper -->
+            <%= render 'layouts/topnavbar' %>
+
+            <!-- Main view  -->
+            <!--<%= yield %>-->
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Items</h1>
@@ -37,3 +61,5 @@
 <br>
 
 <%= link_to 'New Item', new_item_path %>
+</div>
+</div>

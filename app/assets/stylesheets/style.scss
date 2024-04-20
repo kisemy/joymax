@@ -55,7 +55,25 @@
 
   body { overflow: visible !important; }
 
+
+
+
   #page-wrapper {
     margin: 0;
   }
 }
+
+
+
+  .table {
+        width: 100%;
+        table-layout: auto; /* This will adjust column widths based on content */
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        width: auto; /* Allow cells to adjust their width */
+    }

@@ -6,3 +6,4 @@ has_many :paymentlines, dependent: :destroy
   accepts_nested_attributes_for :paymentlines
 
 end
+

@@ -1,3 +1,47 @@
+
+<body>
+
+<p class = "notice" ><%= notice %> </p>
+<p class = "alert" ><%= alert %></p>
+
+
+
+
+
+
+
+
+
+<!-- Skin configuration box -->
+<!-- <%= render 'layouts/skinconfig' %> -->
+
+    <!-- Wrapper-->
+<div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+
+        <!-- Navigation -->
+        <%= render 'layouts/navigation' %>
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+            <!-- Page wrapper -->
+            <%= render 'layouts/topnavbar' %>
+
+            <!-- Main view  -->
+            <!--<%= yield %>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p id="notice"><%= notice %></p>
 
 <h4>Joymax Invoices</h4>
@@ -66,10 +110,10 @@
 
   <thead>
     <tr>
-      <th>Customer no</th>
-      <th>Customer name</th>
-      <th>Contactno</th>
-      <th>Contact name</th>
+      <th>Invoice no</th>
+      <th>Customer Name</th>
+      <th>Contact No</th>
+      <th>Contact Name</th>
       <th>Address</th>
       <th>City</th>
       <th>Date</th>
@@ -82,7 +126,7 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-      
+       <td><%= invoice.id %></td>
         <td><%= invoice.customer_name %></td>
         <td><%= invoice.contactno %></td>
         <td><%= invoice.contact_name %></td>
@@ -94,6 +138,7 @@
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -112,6 +157,13 @@
     </div>
 </div>
 </div>
+
+
+ </div>
+</div>
+
+
+
 
 <% content_for :javascript do %>
 

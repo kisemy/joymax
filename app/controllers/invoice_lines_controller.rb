@@ -1,6 +1,9 @@
 class InvoiceLinesController < ApplicationController
   before_action :set_invoice_line, only: %i[ show edit update destroy ]
 
+
+
+
   # GET /invoice_lines or /invoice_lines.json
   def index
     @invoice_lines = InvoiceLine.all
@@ -22,7 +25,7 @@ class InvoiceLinesController < ApplicationController
   # POST /invoice_lines or /invoice_lines.json
   def create
     @invoice_line = InvoiceLine.new(invoice_line_params)
-
+    @invoice_line.amount =@invoice_line.unit_price * @invoice_line.quantity
     respond_to do |format|
       if @invoice_line.save
         format.html { redirect_to invoice_line_url(@invoice_line), notice: "Invoice line was successfully created." }

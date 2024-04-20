@@ -23,15 +23,15 @@
       <h4>Bill To Account</h4>
 
       <% if !!params[:account_id] %>
-        
+        <%= f.collection_select(:account_id, current_user.accounts, :id, :name, {}, {class: 'form-control custom-input'}) %>
       <% else %>
         <div class="field">
-         
+          <%= f.select(:account_id, current_user.accounts.collect {|a| [a.name, a.id]}, prompt: "Select Account", class: 'form-control custom-input') %>
         </div>
       <% end %>
 
       <br>
-      
+      <%= link_to "Create New Account", new_account_path %>
     </div>
 
     <div class="col">
@@ -59,9 +59,9 @@
 
         <tbody id="table-body" class="fields" >
 
-          <% @invoice.invoice_lines.each do |invoice_line| %>
-            <%= f.fields_for :invoice_lines,product do |ff| %>
-              <%= render partial: 'invoice_line_field', locals: {ff: ff} %>
+          <% @invoice.invoice_products.each do |product| %>
+            <%= f.fields_for :invoice_products,product do |ff| %>
+              <%= render partial: 'invoice_product_field', locals: {ff: ff} %>
             <% end %>
           <% end %>
         </tbody>
@@ -112,6 +112,10 @@
 
   </div>
 
+
+<% end %>
+
+
 <script type="text/javascript">
 
   function showTotal(e){
@@ -146,14 +150,14 @@
     function nameFields(){
       let selects = tBody.getElementsByTagName('select');
       for (var i=0;i < selects.length; i++){
-        // selects[i].name = "invoice[invoice_lines_attributes][" +i+ "][invoice_line_id]";
-        selects[i].name = `invoice[invoice_products_attributes][${i}][invoice_line_id]`;
-        selects[i].id = `invoice[invoice_products_attributes][${i}][invoice_line_id]`;
+        // selects[i].name = "invoice[invoice_products_attributes][" +i+ "][product_id]";
+        selects[i].name = `invoice[invoice_products_attributes][${i}][product_id]`;
+        selects[i].id = `invoice[invoice_products_attributes][${i}][product_id]`;
         selects[i].parentElement.previousSibling.previousSibling.innerHTML = (i+1);
-        // selects[i].parentNode.nextSibling.nextElementSibling.firstElementChild.name = "invoice[invoice_lines_attributes]["+i+"][quantity]";
-        selects[i].parentNode.nextSibling.nextElementSibling.firstElementChild.name = `invoice[invoice_lines_attributes][${i}][quantity]`;
-        // selects[i].parentNode.nextSibling.nextElementSibling.firstElementChild.id = "invoice[invoice_lines_attributes]["+i+"][quantity]";
-        selects[i].parentNode.nextSibling.nextElementSibling.firstElementChild.id = `invoice[invoice_lines_attributes][${i}][quantity]`;
+        // selects[i].parentNode.nextSibling.nextElementSibling.firstElementChild.name = "invoice[invoice_products_attributes]["+i+"][quantity]";
+        selects[i].parentNode.nextSibling.nextElementSibling.firstElementChild.name = `invoice[invoice_products_attributes][${i}][quantity]`;
+        // selects[i].parentNode.nextSibling.nextElementSibling.firstElementChild.id = "invoice[invoice_products_attributes]["+i+"][quantity]";
+        selects[i].parentNode.nextSibling.nextElementSibling.firstElementChild.id = `invoice[invoice_products_attributes][${i}][quantity]`;
       }
     }
 
@@ -176,7 +180,3 @@
 
 
 </script>
-<% end %>
-
-
-

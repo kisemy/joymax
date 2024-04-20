@@ -16,3 +16,22 @@
  *= require style
  *= require font-awesome
  */
+
+
+
+
+
+.containerpv {
+  display: flex;
+ 
+}
+
+.content {
+  flex: 1; /* Each container takes up an equal amount of space */
+  padding: 15px; /* Optional: Add padding to each container */
+  border: 0.1px solid #ccc; /* Optional: Add border for visualization */
+  box-sizing: border-box; /* Include padding and border in the width */
+  overflow: auto; /* Optional: Add scrollbars if content overflows */
+}
+
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_29_213836) do
+ActiveRecord::Schema.define(version: 2023_11_28_203749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 2023_05_29_213836) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "charge_types", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "chargetypes", force: :cascade do |t|
+    t.text "code"
+    t.text "charge_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.text "customer_name"
     t.text "contactno"
@@ -41,6 +54,18 @@ ActiveRecord::Schema.define(version: 2023_05_29_213836) do
     t.date "date"
     t.text "sales_person_code"
     t.text "sales_person_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "gledgers", force: :cascade do |t|
+    t.text "accountno"
+    t.date "date"
+    t.text "documentno"
+    t.text "description"
+    t.decimal "amount"
+    t.text "sourcetype"
+    t.text "sourceno"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -113,6 +138,15 @@ ActiveRecord::Schema.define(version: 2023_05_29_213836) do
     t.text "payee_name"
     t.text "account_type"
     t.text "category_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.integer "price"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

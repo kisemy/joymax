@@ -1,20 +1,55 @@
 Rails.application.routes.draw do
 
-  #devise_for :users
+  resources :gledgers
+  resources :products
+  resources :charge_types
+  resources :chargetypes
+  # devise_for :users
+  #devise_for :usersresources :invoices
 
 
-#devise_for :users,
-  #:skip => [:registrations, :sessions]
+ #devise_for :users,
+ # :skip => [:registrations, :sessions]
 
-#as user do
+# as user do
   # Registrations
-  #get   '/signup'   => 'users/registrations#new', as: :new_user_registration
-  #post  '/signup'   => 'users/registrations#create', as: :user_registration
+ # get   '/signup'   => 'users/registrations#new', as: :new_user_registration
+#  post  '/signup'   => 'users/registrations#create', as: :user_registration
+# end
+
+#devise_for :users
+#devise_scope :user do
+ # authenticated :user do
+  #  root 'dashboards#dashboard_1', as: :authenticated_root
+ #end
+
+  #root 'devise/sessions#new'
+
 #end
 
 
+devise_for :users
+devise_scope :user do
+  authenticated :user do
+    root 'dashboards#dashboard_1', as: :authenticated_root
+  end
+
+  root 'devise/sessions#new'
+
+end
 
 
+# authenticated :user do
+
+ # root to: 'dashboards#dashboard_1'
+
+# end
+
+      # root :to => "devise/sessions#new"
+
+#root 'dashboards#dashboard_1'
+#root to: 'dashboards#dashboard_1'
+   
   resources :receipt_lines
   resources :receipts
   resources :paymentlines
@@ -27,7 +62,7 @@ Rails.application.routes.draw do
   resources :invoices
   resources :customers
 # You can have the root of your site routed with "root"
-  root to: 'dashboards#dashboard_1'
+  
 
   # All routes
   get "dashboards/dashboard_1"
@@ -89,9 +124,14 @@ Rails.application.routes.draw do
   get "appviews/blog"
   get "appviews/article"
   get "appviews/issue_tracker"
+  # resources :invoices
 
   get "pages/search_results"
-  get "pages/lockscreen"
+
+  #get "pages/lockscreen" devise_scope :user do
+    #  root :to => "devise/sessions#new"
+    #end
+
   get "pages/invoice"
   get "pages/invoice_print"
   get "pages/login"
@@ -169,7 +209,52 @@ Rails.application.routes.draw do
 
 
 # routes for adding fields dynamically
-  get '/add_field', to: 'invoices#add_field', as: 'add_field'
-  post '/add_field', to: 'invoices#add_field'
+#resources :invoices do
+  #get '/add_field', to: 'invoices#add_field', as: 'add_field'
+ # post '/add_field', to: 'invoices#add_field'
+#end
+
+
+
+
+
+
+resources :invoices do
+   collection do 
+#get "invoices/postgl" => "invoices#postgl"
+#post "invoices/postgl" => "invoices#postgl"
+ post 'postgl'
+ get  'postgl'
+
+#get 'i/:id/:description', to: 'vouchers#interested', as: :interested
+end
+end
+
+
+ get '/add_field', to: 'payments#add_field', as: 'add_field'
+  post '/add_field', to: 'payments#add_field'
+
+
+
+
+
+
+
+resources :payments do
+
+
+
+   collection do 
+#get "invoices/postgl" => "invoices#postgl"
+#post "invoices/postgl" => "invoices#postgl"
+ post 'postgl'
+ get  'postgl'
+
+#get 'i/:id/:description', to: 'vouchers#interested', as: :interested
+end
+end
+
+
+
 
 end

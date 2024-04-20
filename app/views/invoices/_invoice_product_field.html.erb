@@ -3,11 +3,12 @@
 
     <th scope="row" id="product-num" class='text-center'></th>
 
-    <td><input size="2em" class="form-control text-center" type="text" value=" " charge_type="invoice[invoice_lines_attributes][0][charge_type]" id="invoice_invoice_lines_attributes_0_charge_type"></td>
+
+ <td><%= select_tag :charge_type, options_from_collection_for_select(Product.all, :id, :name), include_blank: 'Select a product'%></td>
 
     <td><input size="2em" class="form-control text-center" type="text" value=" " item_no="invoice[invoice_lines_attributes][0][item_no]" id="invoice_invoice_lines_attributes_0_item_no"></td>
 
-<td><input size="6em" class="label-control text-center" type="text" value=" " description="invoice[invoice_lines_attributes][0][description]" id="invoice_invoice_lines_attributes_0_description"></td>
+<td><input size="6em" class="label-control text-center" type="text" value=" " description="invoice[invoice_lines_attributes][0][descriptionq]" id="invoice_invoice_lines_attributes_0_descriptionq"></td>
 
 
 <td><input size="2em" class="form-control text-center" type="text" value=" " quantity="invoice[invoice_lines_attributes][0][quantity]" id="invoice_invoice_lines_attributes_0_quantity"></td>

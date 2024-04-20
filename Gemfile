@@ -12,6 +12,8 @@ gem "font-awesome-rails"
 #gem 'sqlite3', '~> 1.4'
 
 gem 'pg'
+
+gem "devise"
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -38,6 +40,13 @@ gem 'mini_racer', platforms: :ruby
 # Reduces boot times through caching; required in config/boot.rb
 #gem 'bootsnap'
 #, '>= 1.4.2', require: false
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
+gem 'prawn'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

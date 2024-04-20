@@ -1,3 +1,36 @@
+<body>
+
+<p class = "notice" ><%= notice %> </p>
+<p class = "alert" ><%= alert %></p>
+
+
+
+
+
+
+
+
+
+<!-- Skin configuration box -->
+<!-- <%= render 'layouts/skinconfig' %> -->
+
+    <!-- Wrapper-->
+<div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+
+        <!-- Navigation -->
+        <%= render 'layouts/navigation' %>
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+            <!-- Page wrapper -->
+            <%= render 'layouts/topnavbar' %>
+
+            <!-- Main view  -->
+            <!--<%= yield %>-->
+
+
+
 <div class="row  border-bottom white-bg dashboard-header">
 
     <div class="col-md-3">
@@ -442,28 +475,47 @@
 </div>
 
 
+ 
 
-<% content_for :toast do %>
 
-<!-- Toast notification -->
 
-<div class="toast toast toast-bootstrap hide" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top:20px; right:20px">
-<div class="toast-header">
-    <i class="fa fa-square text-navy"> </i>
-    <strong class="mr-auto m-l-sm">Notification</strong>
-    <small>1 min ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="toast-body">
-    Welcome to <strong>INSPINIA</strong>, responsive admin theme.
-</div>
-</div>
 
-<% end %>
 
 <% content_for :javascript do %>
+
+
+            <!-- Footer -->
+                <!--<%= render 'layouts/footer' %>-->
+
+      <!--  </div>-->
+        <!-- End page wrapper-->
+
+        <!-- Right sidebar -->
+        <%= render 'layouts/rightsidebar' %>
+
+   <!-- </div>-->
+
+
+    <!-- End wrapper-->
+
+    <!-- Include javascript per-controller - vendor plugins -->
+    <%= javascript_include_tag params[:controller] if javascript_exists?(params[:controller]) %>
+
+    <!-- Include javascript per-view -->
+    <!-- For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want -->
+    <%= yield :javascript %>
+
+    <!-- Include Toast notification -->
+    <%= yield :toast %>
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript">
 
@@ -613,3 +665,8 @@ $(window).bind("scroll", function () {
 </script>
 
 <% end %>
+</div>
+
+ </div>
+</body>
+
